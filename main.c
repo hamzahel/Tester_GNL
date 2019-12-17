@@ -6,7 +6,7 @@
 /*   By: hel-ayac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:17:49 by hel-ayac          #+#    #+#             */
-/*   Updated: 2019/12/12 13:07:46 by hel-ayac         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:20:51 by hel-ayac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,21 @@ int main(int argc, char **argv)
 {
 	int		fd;
 	char	*buffer;
-
+	int 	ret;
 	fd = 0;
 	fd = open(argv[1], fd);
 	if (argc < 1)
 		return (1);
-	while (get_next_line(fd, &buffer) > 0)
+	while ((ret = get_next_line(fd, &buffer)) >= 0)
 	{
-		printf("%s\n",buffer);
-		free(buffer);
-		buffer = NULL;
+		if(ret == 1)
+			printf("%s\n",buffer);
+		else if(ret == 0)
+		{
+			printf("%s",buffer);
+			break;
+		}
 	}
-	free(buffer);
 	return (0);
 }
 
