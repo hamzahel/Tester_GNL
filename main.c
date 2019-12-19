@@ -6,12 +6,13 @@
 /*   By: hel-ayac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:17:49 by hel-ayac          #+#    #+#             */
-/*   Updated: 2019/12/17 16:20:51 by hel-ayac         ###   ########.fr       */
+/*   Updated: 2019/12/19 21:22:38 by hel-ayac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../get_next_line/get_next_line.h"
+#include <cfntl.h>
 
 int main(int argc, char **argv)
 {
@@ -24,9 +25,9 @@ int main(int argc, char **argv)
 		return (1);
 	while ((ret = get_next_line(fd, &buffer)) >= 0)
 	{
-		if(ret == 1)
+		if (ret == 1)
 			printf("%s\n",buffer);
-		else if(ret == 0)
+		else if (ret == 0)
 		{
 			printf("%s",buffer);
 			break;
